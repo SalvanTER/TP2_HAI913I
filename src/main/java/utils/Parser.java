@@ -12,6 +12,9 @@ import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
+
+import spoon.visitors.CtClassVisitor;
+
 import org.apache.commons.io.FileUtils;
 
 
