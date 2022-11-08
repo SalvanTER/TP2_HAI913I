@@ -20,8 +20,8 @@ public class Clustering extends PApplet{
 	}
 	public Clustering(Graph graph)
 	{
-		this.graph = graph;
-		this.clusters = new ArrayList<Cluster>(); 
+		Clustering.graph = graph;
+		Clustering.clusters = new ArrayList<Cluster>(); 
 	}
 	public void clusteringHierarchique()
 	{
