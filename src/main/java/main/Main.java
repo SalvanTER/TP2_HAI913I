@@ -1,13 +1,14 @@
 package main;
 
-import java.io.IOException;
-
 import cli.CLIMenu;
 import cli.CLIPlotCouplingGraph;
 import cli.CLIPrintClustering;
 import cli.CLIPrintCouplingGraph;
 import cli.CLIPrintIdentification;
 import identification.Identification;
+import spoon.processors.CodeGenerationProcessor;
+import spoon.reflect.declaration.CtClass;
+import spoon.visitors.CtClassVisitor;
 import utils.Parser;
 
 public class Main{
@@ -16,9 +17,20 @@ public class Main{
 	private static Clustering cluster;
 	private static Identification identification;
 	private static CLIMenu menu = new CLIMenu();
+	private static CtClassVisitor ctClassVisitor = new CtClassVisitor();
 	public static void main(String args[])
 	{
-		System.out.println("Récupération des classes avec l'AST...");
+		
+		System.out.println("Spoon");
+		CodeGenerationProcessor processor = new CodeGenerationProcessor("D:\\telechargement_chrome\\mini_project_in_project\\project");
+		CodeGenerationProcessor codeGenerationProcessor = (CodeGenerationProcessor) processor;
+		codeGenerationProcessor.apply(ctClassVisitor);
+		for (CtClass ctClass : ctClassVisitor.getClasses()) {
+			System.out.println(ctClass.getSimpleName());
+		}
+		
+		/* 
+		System.out.println("RÃ©cupÃ©ration des classes avec l'AST...");
 		try {
 			parser = new Parser();
 		}catch(Exception e)
@@ -30,9 +42,9 @@ public class Main{
 		cGraph = new CouplingGraph(parser);
 		cluster = new Clustering(cGraph.getGraph());
 		
-		System.out.println("Génération du graphe de couplage...");
+		System.out.println("GÃ©nÃ©ration du graphe de couplage...");
 		cGraph.generateCouplingGraph();
-		System.out.println("Execution de l'algorithme de clustering hiérarchique...");
+		System.out.println("Execution de l'algorithme de clustering hiï¿½rarchique...");
 		cluster.clusteringHierarchique();
 		
 		//Algorithme d'identification
@@ -42,8 +54,8 @@ public class Main{
 		menu.addChoice(new CLIPrintCouplingGraph("Afficher graphe de couplage dans le terminal", cGraph));
 		menu.addChoice(new CLIPlotCouplingGraph("Afficher le graphe de couplage en 2D", cGraph));
 		menu.addChoice(new CLIPrintClustering("Afficher le dendrogramme dans le terminal", cluster));
-		menu.addChoice(new CLIPrintIdentification("Afficher les modules identifiés dans le terminal", identification));
+		menu.addChoice(new CLIPrintIdentification("Afficher les modules identifiï¿½s dans le terminal", identification));
 		menu.run();
+		*/
 	}
-
 }

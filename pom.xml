@@ -41,5 +41,10 @@
   <artifactId>processing-core-4</artifactId>
   <version>4.0.1</version>
 </dependency>
+  	<dependency>
+	  <groupId>fr.inria.gforge.spoon</groupId>
+	  <artifactId>spoon-core</artifactId>
+	  <version>8.0.0</version>
+    </dependency>
 </dependencies>
 </project>
