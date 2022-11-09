@@ -20,12 +20,13 @@ public class ParserS implements AbsParser{
     InvocationTree invocationTree;
     List<Point> classes;
     
-    public ParserS()
+    public ParserS(String projectpath)
     {	
 		invocationTree = new InvocationTree();
         ctClassVisitor = new CtClassVisitor();
         classes = new ArrayList<Point>();
-        processor = new CodeGenerationProcessor("D:\\telechargement_chrome\\mini_project_in_project\\project");
+        String pp = "D:\\telechargement_chrome\\mini_project_in_project\\project";
+        processor = new CodeGenerationProcessor(projectpath);
     }
     public void run()
     {

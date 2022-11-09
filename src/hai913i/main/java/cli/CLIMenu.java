@@ -12,7 +12,7 @@ public class CLIMenu {
     }
     public void run()
     {
-        while (true)
+        while (closeMenu())
         {
             printMenu();
             choices.get(getChoice()-1).todo();
@@ -51,6 +51,16 @@ public class CLIMenu {
             return -1;
         }
         return n;
+    }
+    private boolean closeMenu()
+    {
+        for(IChoice i : choices)
+        {
+            if (i.menuClosed()) {
+                return false;
+            }
+        }
+        return true;
     }
     private void printMenu()
     {

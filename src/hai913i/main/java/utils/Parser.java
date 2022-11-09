@@ -20,15 +20,17 @@ import org.apache.commons.io.FileUtils;
 
 public class Parser implements AbsParser{
 	private ClassDeclarationVisitor classDeclaration;
-	public static final String projectPath = "D:\\telechargement_chrome\\mini_project_in_project\\project";
-	public static final String jrePath = "C:\\Program Files\\Java\\jre1.8.0_51\\lib\\rt.jar";
-	public static final String projectSourcePath = projectPath + "\\src";
+	public static  String projectPath = "D:\\telechargement_chrome\\mini_project_in_project\\project";
+	public static String jrePath = "C:\\Program Files\\Java\\jre1.8.0_51\\lib\\rt.jar";
+	public static String projectSourcePath;
 	private ArrayList<CompilationUnit> compilationUnits = new ArrayList<CompilationUnit>();
 	private ArrayList<Point> classes; 
 	static ASTParser parser;
 
-	public Parser() throws IOException
+	public Parser(String projectpath) throws IOException
 	{
+		Parser.projectPath = projectpath;
+		projectSourcePath = projectPath + "\\src";
 		classDeclaration = new ClassDeclarationVisitor();
 		classes = new ArrayList<Point>();
 		final File folder = new File(projectPath);
