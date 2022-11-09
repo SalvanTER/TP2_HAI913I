@@ -2,12 +2,10 @@ package hai913i.main.java.graph;
 
 import java.util.ArrayList;
 
-import org.eclipse.jdt.core.dom.TypeDeclaration;
-
 import processing.core.PApplet;
 
 public class Graph extends PApplet{
-	static private ArrayList<TypeDeclaration> nodes;
+	static private ArrayList<Point> nodes;
 	static private ArrayList<Link> links;
 	static private int sizeNodes;
 	ArrayList<Point> listPoints = new ArrayList<Point>();
@@ -16,15 +14,15 @@ public class Graph extends PApplet{
 		super();
 		if(links == null && nodes == null)
 		{
-			nodes= new ArrayList<TypeDeclaration>();
+			nodes= new ArrayList<Point>();
 			links = new ArrayList<Link>();
 		}
 	}
-	public void addNode(TypeDeclaration node)
+	public void addNode(Point node)
 	{
-		for(TypeDeclaration t : nodes)
+		for(Point t : nodes)
 		{
-			if(node.equals(t))
+			if(node.equalsEntity(t))
 			{
 				return;
 			}
@@ -35,7 +33,7 @@ public class Graph extends PApplet{
 	{
 		for(Link l : links)
 		{
-			if(l.getG1().equals(link.getG1()) && l.getG2().equals(link.getG2()))
+			if(l.getG1().equalsEntity(link.getG1()) && l.getG2().equalsEntity(link.getG2()))
 			{
 				return;
 			}
@@ -52,7 +50,7 @@ public class Graph extends PApplet{
 		}
 		return res;
 	}
-	public ArrayList<TypeDeclaration> getNodes()
+	public ArrayList<Point> getNodes()
 	{
 		return nodes;
 	}
@@ -60,7 +58,7 @@ public class Graph extends PApplet{
 	{
 		return links;
 	}
-	public float getDistanceBetweenNodes(TypeDeclaration t1, TypeDeclaration t2)
+	public float getDistanceBetweenNodes(Point t1, Point t2)
 	{
 		float res = 0;
 		for(Link l : links)
@@ -96,12 +94,14 @@ public class Graph extends PApplet{
         int i = 0;
 
 
-        for(TypeDeclaration t : nodes)
+        for(Point t : nodes)
         {
             noStroke();
         	float posX = width/2-1 + (float) (l * cos((float)((2*PI)/sizeNodes * i)));
         	float posY = height/2-1 +(float) (l * sin((float)((2*PI)/sizeNodes * i)));
-        	listPoints.add(new Point(t, posX, posY));
+			t.setX(posX);
+			t.setY(posY);
+        	listPoints.add(t);
         	i++;
         }  
         for(Link li : links)
@@ -111,7 +111,7 @@ public class Graph extends PApplet{
         	stroke(255);
         	if(li.getWeight() != 0)
         	{
-        		strokeWeight(10*li.getWeight() );
+        		strokeWeight(10*li.getWeight());
         		line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
             	fill(200, 50,50);
             	int textSize = 12;
@@ -133,14 +133,14 @@ public class Graph extends PApplet{
     	fill(50, 50,200);
     	int textSize = 15;
     	textSize(textSize);
-    	String text = p.getTd().getName().toString();
-    	text(p.getTd().getName().toString(), p.getX() - text.length() * textSize/4, p.getY());
+    	String text = p.getName();
+    	text(text, p.getX() - text.length() * textSize/4, p.getY());
 	}
-	private Point getPoint(TypeDeclaration t)
+	private Point getPoint(Point t)
 	{
 		for(Point p : listPoints)
 		{
-			if(p.getTd().equals(t))
+			if(p.equals(t))
 			{
 				return p;
 			}

@@ -1,6 +1,6 @@
 package hai913i.main.java.cli;
 
-import hai913i.main.java.identification.Identification;
+import hai913i.main.java.main.Identification;
 
 public class CLIPrintIdentification extends IChoice{
 	Identification i;

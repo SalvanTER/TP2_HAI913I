@@ -2,10 +2,9 @@ package hai913i.main.java.main;
 
 import java.util.ArrayList;
 
-import org.eclipse.jdt.core.dom.TypeDeclaration;
-
 import hai913i.main.java.dendrogram.Cluster;
 import hai913i.main.java.graph.Graph;
+import hai913i.main.java.graph.Point;
 import processing.core.PApplet;
 
 
@@ -42,7 +41,7 @@ public class Clustering extends PApplet{
 	}
 	public void initClusters()
 	{
-		for(TypeDeclaration c : graph.getNodes())
+		for(Point c : graph.getNodes())
 		{
 			clusters.add(new Cluster(c));
 		}
@@ -70,9 +69,9 @@ public class Clustering extends PApplet{
 	{
 		float res = 0;
 		int i = 0;
-		for(TypeDeclaration t1 : c1.getNodes())
+		for(Point t1 : c1.getNodes())
 		{
-			for(TypeDeclaration t2 : c2.getNodes())
+			for(Point t2 : c2.getNodes())
 			{
 				res += graph.getDistanceBetweenNodes(t1, t2);
 				i++;

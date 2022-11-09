@@ -2,7 +2,6 @@ package hai913i.main.java.spoon.visitors;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtClass;
 

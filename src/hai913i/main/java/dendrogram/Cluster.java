@@ -2,35 +2,34 @@ package hai913i.main.java.dendrogram;
 
 import java.util.ArrayList;
 
-import org.eclipse.jdt.core.dom.TypeDeclaration;
-
 import hai913i.main.java.graph.Graph;
+import hai913i.main.java.graph.Point;
 
 public class Cluster {
 	private String name;
 	private Cluster left;
 	private Cluster right;
 	private static int i = 0;
-	private ArrayList<TypeDeclaration> nodes;
+	private ArrayList<Point> nodes;
 	public Cluster()
 	{
-		nodes = new ArrayList<TypeDeclaration>();
+		nodes = new ArrayList<Point>();
 		name = "Cluster " + i;
 		i++;
 	}
 	public Cluster(String name)
 	{
-		nodes = new ArrayList<TypeDeclaration>();
+		nodes = new ArrayList<Point>();
 		this.setName(name);
 	}
-	public Cluster(TypeDeclaration l)
+	public Cluster(Point l)
 	{
-		nodes = new ArrayList<TypeDeclaration>();
+		nodes = new ArrayList<Point>();
 		nodes.add(l);
 		name = "Cluster " + i;
 		i++;
 	}
-	public ArrayList<TypeDeclaration> getNodes()
+	public ArrayList<Point> getNodes()
 	{
 		return nodes;
 	}
@@ -44,7 +43,7 @@ public class Cluster {
 		i++;
 	}
 	public Cluster(Cluster[] clustersProche) {
-		nodes = new ArrayList<TypeDeclaration>();
+		nodes = new ArrayList<Point>();
 		nodes.addAll(clustersProche[0].getNodes());
 		nodes.addAll(clustersProche[1].getNodes());
 		setLeft(clustersProche[0]);
@@ -78,9 +77,9 @@ public class Cluster {
 		{
 			if(nodes.size() <= 2)
 			{
-				for(TypeDeclaration t : nodes)
+				for(Point t : nodes)
 				{
-					res+= t.getName().toString();
+					res+= t.getName();
 				}
 			}
 			res += "\n";

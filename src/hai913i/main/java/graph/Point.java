@@ -1,15 +1,9 @@
 package hai913i.main.java.graph;
 
-import org.eclipse.jdt.core.dom.TypeDeclaration;
-
-public class Point {
-	TypeDeclaration td;
+public abstract class Point {
 	float x;
 	float y;
 	boolean printed = false;
-	public TypeDeclaration getTd() {
-		return td;
-	}
 	public boolean isPrinted()
 	{
 		return printed;
@@ -17,9 +11,7 @@ public class Point {
 	public void printed() {
 		printed = true;
 	}
-	public void setTd(TypeDeclaration td) {
-		this.td = td;
-	}
+
 	public float getX() {
 		return x;
 	}
@@ -32,10 +24,16 @@ public class Point {
 	public void setY(float y) {
 		this.y = y;
 	}
-	public Point(TypeDeclaration td, float x, float y) {
+	public Point(float x, float y) {
 		super();
-		this.td = td;
 		this.x = x;
 		this.y = y;
 	}
+	public abstract String getName();
+	public abstract Object getEntity();
+	public abstract boolean equalsEntity(Object o);
+	@Override
+	public boolean equals(Object o) { 
+        return equalsEntity(o);
+    }
 }

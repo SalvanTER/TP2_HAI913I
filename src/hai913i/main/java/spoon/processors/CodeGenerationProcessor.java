@@ -13,5 +13,6 @@ public class CodeGenerationProcessor extends SpoonProcessor {
 	public void apply(AbstractProcessor<CtClass> codeGenerator) {
 		parser.addProcessor(codeGenerator);
 		parser.run();
+		
 	}
 }

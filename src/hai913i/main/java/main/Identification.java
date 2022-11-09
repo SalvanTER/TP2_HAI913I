@@ -1,11 +1,10 @@
-package hai913i.main.java.identification;
+package hai913i.main.java.main;
 
 import java.util.ArrayList;
 
-import org.eclipse.jdt.core.dom.TypeDeclaration;
-
 import hai913i.main.java.dendrogram.Cluster;
 import hai913i.main.java.graph.Graph;
+import hai913i.main.java.graph.Point;
 
 public class Identification {
 	private Cluster den; 
@@ -44,9 +43,9 @@ public class Identification {
 		{
 			i++;
 			System.out.println("Module " + i + " compos� des classes suivantes : ");
-			for(TypeDeclaration t : c.getNodes())
+			for(Point t : c.getNodes())
 			{
-				System.out.println("-" + t.getName().toString());
+				System.out.println("-" + t.getName());
 			}
 		}
 	}
