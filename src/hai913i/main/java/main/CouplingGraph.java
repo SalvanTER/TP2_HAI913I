@@ -3,17 +3,17 @@ package hai913i.main.java.main;
 import hai913i.main.java.graph.Graph;
 import hai913i.main.java.graph.Link;
 import hai913i.main.java.graph.Point;
-import hai913i.main.java.utils.AbsMethodOfClass;
-import hai913i.main.java.utils.AbsParser;
+import hai913i.main.java.utils.IMethodOfClass;
+import hai913i.main.java.utils.IParser;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CouplingGraph {
-	private AbsParser parser;
+	private IParser parser;
 	private int nbAllRelations;
 	private Graph graph;
-	public CouplingGraph(AbsParser parser)
+	public CouplingGraph(IParser parser)
 	{
 		graph = new Graph();
 		this.parser = parser;
@@ -23,6 +23,7 @@ public class CouplingGraph {
 	{
 		return nbAllRelations;
 	}
+	//Calcul du nombre de toute les relations entre les couples de méthodes appartenant respectivement à n'importe quelles deux classes de l'application analysés
 	public int initNbAllRelations()
 	{
 		for(int i = 0; i < parser.getClasses().size()-1; i++)
@@ -49,8 +50,8 @@ public class CouplingGraph {
 	private int getNumberOfMethodsCalledFromClass(Point c1, Point c2)
 	{
 		int res = 0;
-		List<AbsMethodOfClass> mcs1 = parser.getMethodsOfClass(c1);
-		for(AbsMethodOfClass mc : mcs1)
+		List<IMethodOfClass> mcs1 = parser.getMethodsOfClass(c1);
+		for(IMethodOfClass mc : mcs1)
 		{
 			res += parser.countMethodsInClass(mc, c2);
 		}

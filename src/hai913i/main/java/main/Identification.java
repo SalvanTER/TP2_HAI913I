@@ -1,6 +1,8 @@
 package hai913i.main.java.main;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
 
 import hai913i.main.java.dendrogram.Cluster;
 import hai913i.main.java.graph.Graph;
@@ -10,10 +12,12 @@ public class Identification {
 	private Cluster den; 
 	private float cp;
 	private ArrayList<Cluster> modules;
-	public Identification(Cluster den, float cp)
+	public Identification(Cluster den) 
 	{
 		this.den = den;
-		this.cp = cp;
+		Scanner input = new Scanner (System.in).useLocale(Locale.US); 
+		System.out.println("Enter a cp value:");
+		cp = (float)input.nextDouble();  
 		modules = new ArrayList<Cluster>();
 	}
 	public void run(Graph g)
@@ -42,7 +46,7 @@ public class Identification {
 		for(Cluster c : modules)
 		{
 			i++;
-			System.out.println("Module " + i + " compos� des classes suivantes : ");
+			System.out.println("Module " + i + " composé des classes suivantes : ");
 			for(Point t : c.getNodes())
 			{
 				System.out.println("-" + t.getName());

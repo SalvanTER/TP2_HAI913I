@@ -11,17 +11,7 @@ public class Cluster {
 	private Cluster right;
 	private static int i = 0;
 	private ArrayList<Point> nodes;
-	public Cluster()
-	{
-		nodes = new ArrayList<Point>();
-		name = "Cluster " + i;
-		i++;
-	}
-	public Cluster(String name)
-	{
-		nodes = new ArrayList<Point>();
-		this.setName(name);
-	}
+
 	public Cluster(Point l)
 	{
 		nodes = new ArrayList<Point>();
@@ -32,15 +22,6 @@ public class Cluster {
 	public ArrayList<Point> getNodes()
 	{
 		return nodes;
-	}
-	public Cluster(Cluster left, Cluster right)
-	{
-		this.setLeft(left);
-		this.setRight(right);
-		nodes.addAll(left.getNodes());
-		nodes.addAll(right.getNodes());
-		name = "Cluster " + i;
-		i++;
 	}
 	public Cluster(Cluster[] clustersProche) {
 		nodes = new ArrayList<Point>();

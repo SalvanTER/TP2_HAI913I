@@ -8,7 +8,6 @@ public class Graph extends PApplet{
 	static private ArrayList<Point> nodes;
 	static private ArrayList<Link> links;
 	static private int sizeNodes;
-	ArrayList<Point> listPoints = new ArrayList<Point>();
 	public Graph()
 	{
 		super();
@@ -46,7 +45,7 @@ public class Graph extends PApplet{
 		String res= "";
 		for(Link l : links)
 		{
-			res+=  l.getG1().getName().toString() + " is connected to " + l.getG2().getName().toString() +" with weight "+ l.getWeight() + " \n";
+			res+=  l.getG1().getName().toString() + " - " + l.getG2().getName().toString() +" with weight "+ l.getWeight() + " \n";
 		}
 		return res;
 	}
@@ -101,7 +100,6 @@ public class Graph extends PApplet{
         	float posY = height/2-1 +(float) (l * sin((float)((2*PI)/sizeNodes * i)));
 			t.setX(posX);
 			t.setY(posY);
-        	listPoints.add(t);
         	i++;
         }  
         for(Link li : links)
@@ -111,14 +109,14 @@ public class Graph extends PApplet{
         	stroke(255);
         	if(li.getWeight() != 0)
         	{
-        		strokeWeight(10*li.getWeight());
+        		strokeWeight(20*li.getWeight());
         		line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
             	fill(200, 50,50);
             	int textSize = 12;
             	textSize(textSize);
         	}
         }
-        for(Point t : listPoints)
+        for(Point t : nodes)
         {
         	printSommet(t, sizeCircle);
         }  
@@ -138,7 +136,7 @@ public class Graph extends PApplet{
 	}
 	private Point getPoint(Point t)
 	{
-		for(Point p : listPoints)
+		for(Point p : nodes)
 		{
 			if(p.equals(t))
 			{

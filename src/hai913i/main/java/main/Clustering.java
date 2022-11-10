@@ -8,11 +8,10 @@ import hai913i.main.java.graph.Point;
 import processing.core.PApplet;
 
 
-public class Clustering extends PApplet{
+public class Clustering{
 	static Graph graph;
 	static ArrayList<Cluster> clusters; 
 	static Cluster dendro;
-	static int posDendro = 0;
 	public Clustering()
 	{
 		super();
@@ -86,54 +85,5 @@ public class Clustering extends PApplet{
 	public void plotDendrogram()
 	{
 		PApplet.main(Clustering.class.getName());
-	}
-	@Override
-    public void settings(){
-        size(1280, 700, FX2D);
-    }
-	@Override
-    public void setup(){
-
-		background(150);
-		drawDendro(dendro, 0, 0, 0, dendro.getNodes().size());
-			
-    }
-	public void drawDendro(Cluster c, int profondeur, float x, float y, int nbNodes)
-	{
-		profondeur++;
-    	fill(50, 50,200);
-    	int textSize = 10;
-    	textSize(textSize);
-    	float posX1 = 50 + width/nbNodes * posDendro;
-    	float posY1 = height - 30;
-    	float posY2 = 10 + (height/profondeur) * (profondeur - 1);
-    	float posX2 = 0;
-		if(c.getLeft().getNodes().size() == 1)
-		{
-			posX1 = 50 + width/nbNodes * posDendro;
-			posY1 = height - 30;
-			posY2 = 10 + (height/profondeur) * (profondeur - 1);
-			String text = c.getLeft().getNodes().get(0).getName().toString().replace(' ', '\n');
-			line(posX1, posY1, posX1, posY2);
-			text(text, posX1 - text.length(), height - 20);
-			posDendro++;
-		}
-		else
-		{
-			drawDendro(c.getLeft(), profondeur, x, y, nbNodes);
-		}
-		if(c.getRight().getNodes().size() == 1)
-		{
-			posX2 = 50 + width/nbNodes * posDendro;
-			String text = c.getRight().getNodes().get(0).getName().toString().replace(' ', '\n');
-			line(posX2, posY1,posX2, posY2);
-			text(text, posX2 - text.length(), height - 20);
-			posDendro++;
-		}
-		else
-		{
-			drawDendro(c.getRight(), profondeur, x, y, nbNodes);
-		}
-		line(posX1, posY2, posX2, posY2);
 	}
 }

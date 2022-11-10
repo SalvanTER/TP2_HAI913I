@@ -18,7 +18,7 @@ import hai913i.main.java.graph.PointTypeDeclaration;
 import org.apache.commons.io.FileUtils;
 
 
-public class Parser implements AbsParser{
+public class Parser implements IParser{
 	private ClassDeclarationVisitor classDeclaration;
 	public static  String projectPath = "D:\\telechargement_chrome\\mini_project_in_project\\project";
 	public static String jrePath = "C:\\Program Files\\Java\\jre1.8.0_51\\lib\\rt.jar";
@@ -82,7 +82,7 @@ public class Parser implements AbsParser{
 		
 		return (CompilationUnit) parser.createAST(null); // create and parse
 	}
-	public List<AbsMethodOfClass> getMethodsOfClass(TypeDeclaration c)
+	public List<IMethodOfClass> getMethodsOfClass(TypeDeclaration c)
 	{
 		return classDeclaration.getMethodsOfClass(c);
 	}
@@ -96,11 +96,11 @@ public class Parser implements AbsParser{
 		return classes;
 	}
 	@Override
-	public List<AbsMethodOfClass> getMethodsOfClass(Point c1) {
+	public List<IMethodOfClass> getMethodsOfClass(Point c1) {
 		return getMethodsOfClass((TypeDeclaration)c1.getEntity());
 	}
 	@Override
-	public int countMethodsInClass(AbsMethodOfClass mc, Point p) {
+	public int countMethodsInClass(IMethodOfClass mc, Point p) {
 		int res = 0;
 		ArrayList<MethodInvocation> mis = classDeclaration.getInvocationTree().get(mc);
 		for(MethodInvocation mi : mis)

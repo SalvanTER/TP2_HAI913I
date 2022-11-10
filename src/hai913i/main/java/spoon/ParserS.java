@@ -9,12 +9,12 @@ import hai913i.main.java.spoon.model.InvocationTree;
 import hai913i.main.java.spoon.model.MethodOfClassSpoon;
 import hai913i.main.java.spoon.processors.CodeGenerationProcessor;
 import hai913i.main.java.spoon.visitors.CtClassVisitor;
-import hai913i.main.java.utils.AbsMethodOfClass;
-import hai913i.main.java.utils.AbsParser;
+import hai913i.main.java.utils.IMethodOfClass;
+import hai913i.main.java.utils.IParser;
 import spoon.reflect.declaration.CtClass;
 import spoon.support.reflect.code.CtInvocationImpl;
 
-public class ParserS implements AbsParser{
+public class ParserS implements IParser{
     CodeGenerationProcessor processor;
     private static CtClassVisitor ctClassVisitor;
     InvocationTree invocationTree;
@@ -43,7 +43,7 @@ public class ParserS implements AbsParser{
         return classes;
     }
     @Override
-    public int countMethodsInClass(AbsMethodOfClass mc, Point p) {
+    public int countMethodsInClass(IMethodOfClass mc, Point p) {
         int res = 0;
 		ArrayList<CtInvocationImpl> mis = invocationTree.getInvocationTree().get(mc);
 		for(CtInvocationImpl mi : mis)
@@ -60,8 +60,8 @@ public class ParserS implements AbsParser{
         return mi.getTarget().getType().getSimpleName();
     }
     @Override
-    public List<AbsMethodOfClass> getMethodsOfClass(Point c1) {
-        ArrayList<AbsMethodOfClass> mcs = new ArrayList<AbsMethodOfClass>();
+    public List<IMethodOfClass> getMethodsOfClass(Point c1) {
+        ArrayList<IMethodOfClass> mcs = new ArrayList<IMethodOfClass>();
 		for(MethodOfClassSpoon mc : invocationTree.getMethodOfClasses())
 		{
 			if(mc.getMyclass().equals(c1.getEntity()))

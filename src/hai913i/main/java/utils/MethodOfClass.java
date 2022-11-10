@@ -2,7 +2,7 @@ package hai913i.main.java.utils;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class MethodOfClass implements AbsMethodOfClass{
+public class MethodOfClass implements IMethodOfClass{
 
 	TypeDeclaration myclass;
 	MethodDeclaration method;

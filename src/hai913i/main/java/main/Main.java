@@ -7,11 +7,11 @@ import hai913i.main.java.cli.CLIPlotCouplingGraph;
 import hai913i.main.java.cli.CLIPrintClustering;
 import hai913i.main.java.cli.CLIPrintCouplingGraph;
 import hai913i.main.java.cli.CLIPrintIdentification;
-import hai913i.main.java.utils.AbsParser;
+import hai913i.main.java.utils.IParser;
 
 public class Main extends AbstractMain{
 	private static CouplingGraph cGraph;
-	private static AbsParser parser;
+	private static IParser parser;
 	private static Clustering cluster;
 	private static Identification identification;
 	private static CLIMenu menu1 = new CLIMenu();
@@ -40,13 +40,13 @@ public class Main extends AbstractMain{
 		cluster.clusteringHierarchique();
 		
 		//Algorithme d'identification
-		identification = new Identification(cluster.getDendrogram(), (float)0.05);
+		identification = new Identification(cluster.getDendrogram());
 		System.out.println("Execution de l'algorithme d'identification...");
 		identification.run(cGraph.getGraph());
 		menu1.addChoice(new CLIPrintCouplingGraph("Afficher graphe de couplage dans le terminal", cGraph));
 		menu1.addChoice(new CLIPlotCouplingGraph("Afficher le graphe de couplage en 2D", cGraph));
 		menu1.addChoice(new CLIPrintClustering("Afficher le dendrogramme dans le terminal", cluster));
-		menu1.addChoice(new CLIPrintIdentification("Afficher les modules identifi�s dans le terminal", identification));
+		menu1.addChoice(new CLIPrintIdentification("Afficher les modules identifiés dans le terminal", identification));
 		menu1.run();
 	}
 }

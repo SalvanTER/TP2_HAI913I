@@ -58,9 +58,9 @@ public class ClassDeclarationVisitor extends ASTVisitor{
 	HashMap<MethodOfClass, ArrayList<MethodInvocation>> getInvocationTree() {
 		return invocationTree;
 	}
-	public ArrayList<AbsMethodOfClass> getMethodsOfClass(TypeDeclaration c)
+	public ArrayList<IMethodOfClass> getMethodsOfClass(TypeDeclaration c)
 	{
-		ArrayList<AbsMethodOfClass> mcs = new ArrayList<AbsMethodOfClass>();
+		ArrayList<IMethodOfClass> mcs = new ArrayList<IMethodOfClass>();
 		for(MethodOfClass mc : methodsOfClasses)
 		{
 			if(mc.myclass.equals(c))

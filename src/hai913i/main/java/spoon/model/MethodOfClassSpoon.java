@@ -1,10 +1,10 @@
 package hai913i.main.java.spoon.model;
 
-import hai913i.main.java.utils.AbsMethodOfClass;
+import hai913i.main.java.utils.IMethodOfClass;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
 
-public class MethodOfClassSpoon implements AbsMethodOfClass{
+public class MethodOfClassSpoon implements IMethodOfClass{
 
 	CtClass myclass;
 	public CtClass getMyclass() {
